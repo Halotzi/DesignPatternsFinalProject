@@ -7,14 +7,28 @@ namespace TICTacToe
 {
     public class UIHandler : MonoBehaviour
     {
-        [SerializeField] Canvas canvas;
-        [SerializeField] Sprite winnerSprite;
+        [SerializeField] GameObject _winnerCanvas;
+        [SerializeField] Image _winnerSprite;
+
+        [SerializeField] GameObject _indicatorCanvas;
+        [SerializeField] Image _indicatorSprite;
+
+        private void Start()
+        {
+            GameManager.Instance.TurnHandler.OnPlayerTurnChanged += UpdateIndicator;
+        }
+
         public void ActivateResultCanvas(int result)
         {
-            winnerSprite = GameManager.Instance.VisualHandler.GetSprite(GameManager.Instance.TurnHandler.PlayerIDTurn);
-            canvas.gameObject.SetActive(true);
+            _indicatorCanvas.SetActive(false);
+            _winnerSprite.sprite = GameManager.Instance.VisualHandler.GetSprite(result);
+            _winnerCanvas.gameObject.SetActive(true);
         }
-     
+
+        public void UpdateIndicator(int playerIDTurn)
+        {
+            _indicatorSprite.sprite = GameManager.Instance.VisualHandler.GetSprite(playerIDTurn);
+        }
     }
 }
 

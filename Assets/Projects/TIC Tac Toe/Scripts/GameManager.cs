@@ -10,16 +10,17 @@ namespace TICTacToe
         private static GameManager _instance;
 
         [SerializeField] VisualHandler _visualHandler;
-        [SerializeField] TurnHandler _turnHandler;
         [SerializeField] UIHandler _uiHandler;
 
         public UIHandler UIHandler => _uiHandler;
         public VisualHandler VisualHandler => _visualHandler;
         public TurnHandler TurnHandler => _turnHandler;
+        private TurnHandler _turnHandler;
 
         private void Awake()
         {
             _instance = this;
+            _turnHandler = new TurnHandler();
         }
 
         private void Start()

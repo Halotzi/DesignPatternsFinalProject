@@ -10,10 +10,7 @@ namespace TICTacToe
 
         private void Start()
         {
-            for (int i = 0; i < _boxes.Count; i++)
-            {
-                _boxes[i].SetBoxID(i);
-            }
+            InitBoxesData();
         }
 
         public void CheckForWinner()
@@ -22,7 +19,7 @@ namespace TICTacToe
                 Debug.LogError("Borad Handler: No Boxes!");
 
             int turnCounter = GameManager.Instance.TurnHandler.TurnCounter;
-            if (turnCounter>4)
+            if (turnCounter>3)
             {
                 int checkResult = CheckRows();
                 if (checkResult > -1)
@@ -45,11 +42,10 @@ namespace TICTacToe
                     return;
                 }
 
-                if(turnCounter==9)
+                if(turnCounter== _boxes.Count-1)
                     GameManager.Instance.UIHandler.ActivateResultCanvas(checkResult);
             }
-
-            
+            GameManager.Instance.TurnHandler.ChangePlayerTurn();
         }
 
         #region Rows Checks
@@ -74,7 +70,7 @@ namespace TICTacToe
 
         private int CheckUpperLine()
         {
-            if (_boxes[0].PlayerIDSolder == _boxes[1].PlayerIDSolder && _boxes[1].PlayerIDSolder == _boxes[2].PlayerIDSolder)
+            if (_boxes[0].PlayerIDSolder == _boxes[1].PlayerIDSolder && _boxes[1].PlayerIDSolder == _boxes[2].PlayerIDSolder && _boxes[0].PlayerIDSolder != -1)
                 return _boxes[0].PlayerIDSolder;
 
             else
@@ -83,7 +79,7 @@ namespace TICTacToe
 
         private int CheckMiddleLine()
         {
-            if (_boxes[3].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[5].PlayerIDSolder)
+            if (_boxes[3].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[5].PlayerIDSolder && _boxes[3].PlayerIDSolder != -1)
                 return _boxes[3].PlayerIDSolder;
 
             else
@@ -92,7 +88,7 @@ namespace TICTacToe
 
         private int CheckBottomLine()
         {
-            if (_boxes[6].PlayerIDSolder == _boxes[7].PlayerIDSolder && _boxes[7].PlayerIDSolder == _boxes[8].PlayerIDSolder)
+            if (_boxes[6].PlayerIDSolder == _boxes[7].PlayerIDSolder && _boxes[7].PlayerIDSolder == _boxes[8].PlayerIDSolder && _boxes[6].PlayerIDSolder!=-1)
                 return _boxes[6].PlayerIDSolder;
 
             else
@@ -122,7 +118,7 @@ namespace TICTacToe
 
         private int CheckLefColumn()
         {
-            if (_boxes[0].PlayerIDSolder == _boxes[3].PlayerIDSolder && _boxes[3].PlayerIDSolder == _boxes[6].PlayerIDSolder)
+            if (_boxes[0].PlayerIDSolder == _boxes[3].PlayerIDSolder && _boxes[3].PlayerIDSolder == _boxes[6].PlayerIDSolder && _boxes[0].PlayerIDSolder != -1)
                 return _boxes[0].PlayerIDSolder;
 
             else
@@ -131,7 +127,7 @@ namespace TICTacToe
 
         private int CheckMiddleColumn()
         {
-            if (_boxes[1].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[7].PlayerIDSolder)
+            if (_boxes[1].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[7].PlayerIDSolder && _boxes[1].PlayerIDSolder != -1)
                 return _boxes[1].PlayerIDSolder;
 
             else
@@ -140,7 +136,7 @@ namespace TICTacToe
 
         private int CheckRightColumn()
         {
-            if (_boxes[2].PlayerIDSolder == _boxes[5].PlayerIDSolder && _boxes[5].PlayerIDSolder == _boxes[8].PlayerIDSolder)
+            if (_boxes[2].PlayerIDSolder == _boxes[5].PlayerIDSolder && _boxes[5].PlayerIDSolder == _boxes[8].PlayerIDSolder && _boxes[2].PlayerIDSolder != -1)
                 return _boxes[2].PlayerIDSolder;
 
             else
@@ -166,7 +162,7 @@ namespace TICTacToe
 
         private int CheckFirstDiagonal()
         {
-            if (_boxes[0].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[8].PlayerIDSolder)
+            if (_boxes[0].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[8].PlayerIDSolder && _boxes[0].PlayerIDSolder != -1)
                 return _boxes[0].PlayerIDSolder;
 
             else
@@ -175,13 +171,32 @@ namespace TICTacToe
 
         private int CheckSecondDiagonal()
         {
-            if (_boxes[2].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[6].PlayerIDSolder)
+            if (_boxes[2].PlayerIDSolder == _boxes[4].PlayerIDSolder && _boxes[4].PlayerIDSolder == _boxes[6].PlayerIDSolder && _boxes[2].PlayerIDSolder != -1)
                 return _boxes[2].PlayerIDSolder;
 
             else
                 return -1;
         }
         #endregion
+
+        private void OnDestroy()
+        {
+            for (int i = 0; i < _boxes.Count; i++)
+            {
+                _boxes[i].OnSoldierCreated -= CheckForWinner;
+            }
+        }
+
+        private void InitBoxesData()
+        {
+            if (_boxes.Count != 0 || _boxes == null)
+                Debug.LogError("BoardHandler: Fix the boxes");
+            for (int i = 0; i < _boxes.Count; i++)
+            {
+                _boxes[i].SetBoxID(i);
+                _boxes[i].OnSoldierCreated += CheckForWinner;
+            }
+        }
     }
 }
 
