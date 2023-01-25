@@ -11,10 +11,15 @@ namespace TICTacToe
 
         [SerializeField] VisualHandler _visualHandler;
         [SerializeField] UIHandler _uiHandler;
+        [SerializeField] Momento _momento;
+        [SerializeField] BoardHandler _boardHandler;
 
         public UIHandler UIHandler => _uiHandler;
+        public BoardHandler BoardHandler => _boardHandler;
         public VisualHandler VisualHandler => _visualHandler;
         public TurnHandler TurnHandler => _turnHandler;
+        public Momento Momento => _momento;
+
         private TurnHandler _turnHandler;
 
         private void Awake()

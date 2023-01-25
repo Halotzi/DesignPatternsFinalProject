@@ -29,6 +29,7 @@ namespace TICTacToe
         {
             _indicatorSprite.sprite = GameManager.Instance.VisualHandler.GetSprite(playerIDTurn);
         }
+
     }
 }
 

@@ -11,26 +11,29 @@ namespace TICTacToe
         private int _playerIDSoldier;
         private int _boxID;
 
+        public int GetBoxID() { return _boxID; }
         public void SetBoxID(int boxID) { _boxID = boxID; }
 
         public int PlayerIDSolder => _playerIDSoldier;
 
-        private void Start()
+        private void Awake()
         {
             _playerIDSoldier = -1;
         }
 
         private void OnMouseDown()
         {
-            if (_spriteRenderer.sprite == null)
+            if (_spriteRenderer.sprite == null && _boxID!=-1)
             {
-                CreateSoilder();
+                DuplicateBox();
+                GameManager.Instance.Momento.AddUndo(this);
+                CreateSoldier();
                 if (OnSoldierCreated != null)
                     OnSoldierCreated.Invoke();
             }
         }
 
-        private void CreateSoilder()
+        private void CreateSoldier()
         {
             _playerIDSoldier = GameManager.Instance.TurnHandler.PlayerIDTurn;
             _spriteRenderer.sprite = GameManager.Instance.VisualHandler.GetSprite(GameManager.Instance.TurnHandler.PlayerIDTurn);
@@ -40,6 +43,11 @@ namespace TICTacToe
         {
             _playerIDSoldier = -1;
             _spriteRenderer.sprite = null;
+        }
+
+        private void DuplicateBox()
+        {
+           
         }
     }
 }
