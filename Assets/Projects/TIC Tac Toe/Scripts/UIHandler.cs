@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace TICTacToe
@@ -28,6 +29,11 @@ namespace TICTacToe
         public void UpdateIndicator(int playerIDTurn)
         {
             _indicatorSprite.sprite = GameManager.Instance.VisualHandler.GetSprite(playerIDTurn);
+        }
+
+        public void ResetGame()
+        {
+            SceneManager.LoadScene("TIC Tac Toe Scene");
         }
 
     }

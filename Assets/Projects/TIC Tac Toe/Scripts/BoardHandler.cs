@@ -45,7 +45,8 @@ namespace TICTacToe
                 if(turnCounter== Boxes.Count-1)
                     GameManager.Instance.UIHandler.ActivateResultCanvas(checkResult);
             }
-            GameManager.Instance.TurnHandler.ChangePlayerTurn();
+            GameManager.Instance.TurnHandler.ChangePlayerTurn(false);
+            GameManager.Instance.Momento.ResetRedo();
         }
 
         #region Rows Checks

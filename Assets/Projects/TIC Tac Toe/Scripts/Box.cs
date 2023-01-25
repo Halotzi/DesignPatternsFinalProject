@@ -25,8 +25,7 @@ namespace TICTacToe
         {
             if (_spriteRenderer.sprite == null && _boxID!=-1)
             {
-                DuplicateBox();
-                GameManager.Instance.Momento.AddUndo(this);
+                GameManager.Instance.Momento.AddUndo(DuplicateBox());
                 CreateSoldier();
                 if (OnSoldierCreated != null)
                     OnSoldierCreated.Invoke();
@@ -45,10 +44,36 @@ namespace TICTacToe
             _spriteRenderer.sprite = null;
         }
 
-        private void DuplicateBox()
+        public DuplicatedBox DuplicateBox()
         {
-           
+            DuplicatedBox duplicatedBox = new DuplicatedBox(_spriteRenderer.sprite, _playerIDSoldier, _boxID);
+            return duplicatedBox;
+        }
+
+        public void InsertDuplicateData(DuplicatedBox duplicatedBox)
+        {
+            _spriteRenderer.sprite = duplicatedBox.Sprite;
+            _playerIDSoldier = duplicatedBox.PlayerIDSoldier;
+            _boxID = duplicatedBox.BoxID;
+        }
+    }
+
+
+}
+
+namespace TICTacToe
+{
+    public class DuplicatedBox
+    {
+        public Sprite Sprite;
+        public int PlayerIDSoldier;
+        public int BoxID;
+
+        public DuplicatedBox(Sprite SpriteRenderer, int PlayerIDSoldier, int BoxID)
+        {
+            this.Sprite = SpriteRenderer;
+            this.PlayerIDSoldier = PlayerIDSoldier;
+            this.BoxID = BoxID;
         }
     }
 }
-

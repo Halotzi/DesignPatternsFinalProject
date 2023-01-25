@@ -6,17 +6,18 @@ namespace TICTacToe
 {
     public class Momento : MonoBehaviour
     {
-        Stack<Box> _undo = new Stack<Box>();
-        Stack<Box> _redo = new Stack<Box>();
+        Stack<DuplicatedBox> _undo = new Stack<DuplicatedBox>();
+        Stack<DuplicatedBox> _redo = new Stack<DuplicatedBox>();
 
         public void Undo()
         {
             if(_undo.Count!=0)
             {
-                Box undoBox = _undo.Pop();
-                Box redoBox = GameManager.Instance.BoardHandler.Boxes[undoBox.GetBoxID()];
-                GameManager.Instance.BoardHandler.Boxes[undoBox.GetBoxID()] = undoBox;
+                DuplicatedBox undoBox = _undo.Pop();
+                DuplicatedBox redoBox = GameManager.Instance.BoardHandler.Boxes[undoBox.BoxID].DuplicateBox();
+                GameManager.Instance.BoardHandler.Boxes[undoBox.BoxID].InsertDuplicateData(undoBox);
                 _redo.Push(redoBox);
+                GameManager.Instance.TurnHandler.ChangePlayerTurn(true);
             }
         }
 
@@ -24,21 +25,21 @@ namespace TICTacToe
         {
             if (_redo.Count != 0)
             {
-                Box redoBox = _redo.Pop();
-                Box undoBox = GameManager.Instance.BoardHandler.Boxes[redoBox.GetBoxID()];
-                GameManager.Instance.BoardHandler.Boxes[redoBox.GetBoxID()] = redoBox;
+                DuplicatedBox redoBox = _redo.Pop();
+                DuplicatedBox undoBox = GameManager.Instance.BoardHandler.Boxes[redoBox.BoxID].DuplicateBox();
+                GameManager.Instance.BoardHandler.Boxes[redoBox.BoxID].InsertDuplicateData(redoBox);
                 _undo.Push(undoBox);
             }
-
         }
 
-        public void AddUndo(Box lastUsedBox)
+        public void AddUndo(DuplicatedBox lastUsedBox)
         {
             _undo.Push(lastUsedBox);
         }
 
         public void ResetRedo()
         {
+            if(_redo.Count>0)
             _redo.Clear();
         }
     }

@@ -22,7 +22,7 @@ namespace TICTacToe
             GameManager.Instance.UIHandler.UpdateIndicator(_playerIdTurn);
         }
 
-        public void ChangePlayerTurn()
+        public void ChangePlayerTurn(bool isMomento)
         {
             if (_playerIdTurn == 0)
                 _playerIdTurn = 1;
@@ -30,7 +30,11 @@ namespace TICTacToe
             else
                 _playerIdTurn = 0;
 
-            _turnCounter++;
+            if (isMomento)
+                _turnCounter--;
+
+            else
+                _turnCounter++;
 
             if (OnPlayerTurnChanged!=null)
             OnPlayerTurnChanged.Invoke(PlayerIDTurn);
