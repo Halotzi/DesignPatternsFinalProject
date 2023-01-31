@@ -215,8 +215,81 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1001 &1146191200
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 438992429061264152, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: _animator
+      value: 
+      objectReference: {fileID: 1326697316}
+    - target: {fileID: 438992429061264152, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: _cameraTransform
+      value: 
+      objectReference: {fileID: 1942693375}
+    - target: {fileID: 438992429061264152, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: _characterController
+      value: 
+      objectReference: {fileID: 1326697318}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 643.6929
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.000029563904
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 755.39746
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948599890014604504, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5757612211173054050, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_Name
+      value: El Chupacabra
+      objectReference: {fileID: 0}
+    - target: {fileID: 6123713059457453618, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: b536ff3cc13c5524088734e611768547, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0297332b98816694394b3dd0d1724599, type: 3}
 --- !u!1 &1147574684
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,16 +329,16 @@ Terrain:
   m_Enabled: 1
   serializedVersion: 6
   m_TerrainData: {fileID: 15600000, guid: ebd402c9e6f24cf458d70931cf7e67c5, type: 2}
-  m_TreeDistance: 5000
-  m_TreeBillboardDistance: 300
+  m_TreeDistance: 272
+  m_TreeBillboardDistance: 150
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 80
-  m_DetailObjectDensity: 1
+  m_DetailObjectDistance: 50
+  m_DetailObjectDensity: 0.109
   m_HeightmapPixelError: 5
-  m_SplatMapDistance: 1000
+  m_SplatMapDistance: 90
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 1
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -293,8 +366,18 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1326697316 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6123713059457453618, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+  m_PrefabInstance: {fileID: 1146191200}
+  m_PrefabAsset: {fileID: 0}
+--- !u!143 &1326697318 stripped
+CharacterController:
+  m_CorrespondingSourceObject: {fileID: 3561325134201733373, guid: 0297332b98816694394b3dd0d1724599, type: 3}
+  m_PrefabInstance: {fileID: 1146191200}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1942693372
 GameObject:
   m_ObjectHideFlags: 0
@@ -372,7 +455,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1942693372}
   m_LocalRotation: {x: 0.22689526, y: -0, z: -0, w: 0.9739192}
-  m_LocalPosition: {x: 567, y: 74, z: 458}
+  m_LocalPosition: {x: 643.6929, y: 2.446, z: 753.255}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
