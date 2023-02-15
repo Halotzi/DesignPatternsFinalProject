@@ -9,9 +9,16 @@ namespace AdventureGame
         public static GameManager Instance => _instance;
         private static GameManager _instance;
 
+        [SerializeField] private PlayerManager _playerManager;
+        public PlayerManager PlayerManager => _playerManager;
         private void Awake()
         {
             _instance = this;
+        }
+
+        private void Alon()
+        {
+
         }
     }
 }

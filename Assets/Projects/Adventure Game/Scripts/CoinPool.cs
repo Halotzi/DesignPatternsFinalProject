@@ -3,6 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace AdventureGame
+{
+
 public class CoinPool : MonoBehaviour, IDisposable
 {
     [SerializeField] private Transform _parent;
@@ -72,4 +75,5 @@ public class CoinPool : MonoBehaviour, IDisposable
 public interface IPoolable<T>
 {
     public event Action<T> OnDispos;
+}
 }
