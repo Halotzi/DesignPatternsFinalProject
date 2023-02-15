@@ -13,6 +13,7 @@ namespace AdventureGame
 
         [SerializeField] private float _jumpButtonGracePeriod;
         [SerializeField] private float _jumpHorizontalSpeed;
+        [SerializeField] private Transform _cameraTransform;
         [SerializeField] private Animator _animator;
         [SerializeField] private CharacterController _characterController;
 
@@ -40,6 +41,7 @@ namespace AdventureGame
             float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
 
             _animator.SetFloat("Input Magnitude", inputMagnitude, 0.05f, Time.deltaTime);
+            movementDirection = Quaternion.AngleAxis(_cameraTransform.rotation.eulerAngles.y, Vector3.up) * movementDirection;
             movementDirection.Normalize();
 
             ySpeed += Physics.gravity.y * Time.deltaTime;

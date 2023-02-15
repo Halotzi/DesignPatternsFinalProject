@@ -33,7 +33,7 @@ public class Zombie : MonoBehaviour
 
             else
             {
-
+                _animator.SetBool("IsWalking", false);
             }
         }
 
@@ -41,13 +41,19 @@ public class Zombie : MonoBehaviour
         {
             _animator.SetTrigger("Attack");
             if (Vector3.Distance(_playerMovement.transform.position, transform.position) < _distanceToFollowPlayer)
+            {
                 GameManager.Instance.PlayerManager.PlayerData.GetDamage(_attackPower);
+                transform.LookAt(_playerMovement.transform.position, Vector3.up);
+            }
 
         }
 
         private void FollowPlayer()
         {
-            Vector3.MoveTowards(transform.position, _playerMovement.transform.position, _speed);
+            _animator.SetBool("IsWalking", true);
+            transform.position = Vector3.MoveTowards(transform.position, _playerMovement.transform.position, _speed*Time.deltaTime);
+            transform.LookAt(_playerMovement.transform.position, Vector3.up);
+
         }
     }
 }

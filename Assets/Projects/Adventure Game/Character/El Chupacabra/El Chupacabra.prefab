@@ -1244,10 +1244,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4948599890014604504}
   - component: {fileID: 3561325134201733373}
-  - component: {fileID: 4448650294180356387}
   - component: {fileID: 438992429061264152}
-  - component: {fileID: 2541021117816103593}
   - component: {fileID: 6123713059457453618}
+  - component: {fileID: 6139035784198301623}
+  - component: {fileID: 5296280694153507820}
   m_Layer: 0
   m_Name: El Chupacabra
   m_TagString: Untagged
@@ -1290,20 +1290,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.91, z: 0}
---- !u!114 &4448650294180356387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5757612211173054050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dcd39189a2fbbad48979a9260aae2bb5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerMovement: {fileID: 438992429061264152}
-  _playerData: {fileID: 2541021117816103593}
 --- !u!114 &438992429061264152
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,24 +1302,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f331f71f8f38034cb740b6c2dd8c04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 360
+  rotationSpeed: 720
   jumpSpeed: 7
   _jumpButtonGracePeriod: 3.12
   _jumpHorizontalSpeed: 0.2
-  _animator: {fileID: 6123713059457453618}
-  _characterController: {fileID: 3561325134201733373}
---- !u!114 &2541021117816103593
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5757612211173054050}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5757c723ad14bbb4db66e0661e99bac3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  _cameraTransform: {fileID: 0}
+  _animator: {fileID: 0}
+  _characterController: {fileID: 0}
 --- !u!95 &6123713059457453618
 Animator:
   serializedVersion: 4
@@ -1360,6 +1335,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &6139035784198301623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757612211173054050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcd39189a2fbbad48979a9260aae2bb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 438992429061264152}
+  _playerData: {fileID: 5296280694153507820}
+--- !u!114 &5296280694153507820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5757612211173054050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5757c723ad14bbb4db66e0661e99bac3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5887116599245511902
 GameObject:
   m_ObjectHideFlags: 0
