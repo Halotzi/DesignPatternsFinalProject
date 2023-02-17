@@ -29,13 +29,14 @@ namespace AdventureGame
         void Start()
         {
             originalStepOffset = _characterController.stepOffset;
+            GameManager.Instance.CoinManager.OnCollected += CoinCollected;
         }
 
         // Update is called once per frame
         void Update()
         {
             float horizontalInput = Input.GetAxis("Horizontal");
-            float verticalInput = Input.GetAxis("Vertical");
+            float verticalInput = Input.GetAxis("Vertical") ;
 
             Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
             float inputMagnitude = Mathf.Clamp01(movementDirection.magnitude);
@@ -154,6 +155,16 @@ namespace AdventureGame
             _animator.SetBool("IsFalling", false);
             _isGrounded = true;
             _animator.SetBool("IsGrounded", true);
+        }
+
+        private void CoinCollected()
+        {
+            ySpeed += 0.1f;
+        }
+
+        private void OnDestroy()
+        {
+            GameManager.Instance.CoinManager.OnCollected -= CoinCollected;
         }
     }
 

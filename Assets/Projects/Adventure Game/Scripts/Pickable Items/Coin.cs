@@ -1,16 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using System;
-public class Coin : MonoBehaviour, IDisposable
+using UnityEngine;
+
+namespace AdventureGame
 {
-    [SerializeField] private GameObject _coinPrefab;
 
-    public event Action<Coin> OnDisposed;
-    public GameObject CoinPrefab => _coinPrefab;
-
-    public virtual void Dispose()
+    public class Coin : MonoBehaviour, IDisposable
     {
-        Destroy(this.gameObject);
+        public event Action<Coin> OnDisposed;
+
+        public virtual void Dispose()
+        {
+            OnDisposed.Invoke(this);
+            Destroy(this.gameObject);
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            if (collision.gameObject.name == "El Chupacabra")
+                Dispose();
+        }
     }
 }
