@@ -1179,7 +1179,7 @@ MonoBehaviour:
   _attackPower: 0
   _distanceToFollowPlayer: 10
   _distanceToAttackPlayer: 2
-  _speed: 5
+  _speed: 4
 --- !u!54 &1304613189859306158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1205,7 +1205,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 3733836105738666608}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   m_Radius: 0.37
   m_Height: 2.53
   m_Direction: 1
