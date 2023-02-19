@@ -8,6 +8,12 @@ namespace AdventureGame
     {
         public event Action<Coin> OnDisposed;
 
+        private void Update()
+        {
+            if (transform.position.y < -3f)
+                Dispose();
+        }
+
         public virtual void Dispose()
         {
             OnDisposed.Invoke(this);
