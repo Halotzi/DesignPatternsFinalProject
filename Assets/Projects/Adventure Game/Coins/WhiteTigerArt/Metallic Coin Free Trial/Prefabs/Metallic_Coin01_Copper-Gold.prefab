@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 4884623063939950412}
   - component: {fileID: 7218528590969885574}
   - component: {fileID: 1332820918}
-  - component: {fileID: 1332820919}
   - component: {fileID: 8401111015576312823}
+  - component: {fileID: 1244637496545377932}
   m_Layer: 0
   m_Name: Metallic_Coin01_Copper-Gold
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 9164158878184469075}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,20 +102,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &1332820919
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9164158878184469075}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -4891524235082050076, guid: c289a94b305e8bd4eb44e5d735963b63, type: 3}
 --- !u!114 &8401111015576312823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,4 +114,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ea0b1b0de11915488e7c6beb074af24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 0}
+--- !u!136 &1244637496545377932
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9164158878184469075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.1
+  m_Height: 0.2425
+  m_Direction: 1
+  m_Center: {x: -0.000000037252903, y: 0.121262684, z: 0.0000014384277}
