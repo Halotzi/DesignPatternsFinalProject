@@ -8,7 +8,7 @@ namespace AdventureGame
 
     public class CoinManager : MonoBehaviour
     {
-        public event Action OnCollected;
+        public event Action<bool> OnCollected;
         public event Action OnDropped;
 
         [SerializeField] private CoinSpawner _coinSpawner;
@@ -28,11 +28,11 @@ namespace AdventureGame
             OnDropped.Invoke();
         }
 
-        private void UnregisterCoin(Coin coin)
+        private void UnregisterCoin(Coin coin, bool isTaken)
         {
             _coins.Remove(coin);
             if (OnCollected != null)
-                OnCollected.Invoke();
+                OnCollected.Invoke(isTaken);
         }
 
         private void OnDestroy()

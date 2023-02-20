@@ -157,8 +157,9 @@ namespace AdventureGame
             _animator.SetBool("IsGrounded", true);
         }
 
-        private void CoinCollected()
+        private void CoinCollected(bool isCollected)
         {
+            if(isCollected)
             ySpeed += 0.1f;
         }
 

@@ -6,13 +6,17 @@ namespace AdventureGame
     public class CoinTracker : MonoBehaviour
     {
 
-        [SerializeField] TextMeshProUGUI _trackerText;
-        private string eggLeftText = "Egg left to collect: ";
+        [SerializeField] TextMeshProUGUI _coinsLeftTextMesh;
+        [SerializeField] TextMeshProUGUI _coinsCollectedTextMesh;
+        private string _coinsLeftText = "Coins left to collect: ";
+        private string _coinsCollectedText = "Coins collected: ";
         private int _availableCoins = 0;
+        private int _collectedCoins = 0;
 
         private void Start()
         {
-            _trackerText.text = eggLeftText + _availableCoins;
+            UpdateCoinUI();
+
             GameManager.Instance.CoinManager.OnDropped += IncreaseCoinsTracker;
             GameManager.Instance.CoinManager.OnCollected += DecreaseCoinsTracker;
         }
@@ -20,13 +24,21 @@ namespace AdventureGame
         private void IncreaseCoinsTracker()
         {
             _availableCoins++;
-            _trackerText.text = eggLeftText + _availableCoins;
+            _coinsLeftTextMesh.text = _coinsLeftText + _availableCoins;
         }
 
-        private void DecreaseCoinsTracker()
+        private void UpdateCoinUI()
+        {
+            _coinsLeftTextMesh.text = _coinsLeftText + _availableCoins;
+            _coinsCollectedTextMesh.text = _coinsCollectedText + _collectedCoins;
+        }
+
+        private void DecreaseCoinsTracker(bool isCollected)
         {
             _availableCoins--;
-            _trackerText.text = eggLeftText + _availableCoins;
+            if(isCollected)
+            _collectedCoins++;
+            UpdateCoinUI();
         }
 
         private void OnDestroy()
